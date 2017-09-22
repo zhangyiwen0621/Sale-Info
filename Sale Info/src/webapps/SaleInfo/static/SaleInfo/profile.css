@@ -1,0 +1,30 @@
+.my-profile-container {
+	margin-top: 20px;
+	margin-left: 20px;
+	margin-right: 20px;
+	border-radius: 20px;
+	height: 300px;
+}
+
+.my-profile-image {
+	margin: 0 auto;
+	border-radius: 50%;
+}
+
+.my-profile-info-container {
+	text-align: left;
+}
+
+.blog-post-meta {
+	font-family: 'Scope One', serif;
+}
+
+div.transparent-white {
+  background: rgba(250, 240, 240,0.7);
+  box-shadow: 3px 3px 5px #888888;
+}
+
+button#myCoupon {
+	margin-bottom: 30px;
+	width: 200px;
+}

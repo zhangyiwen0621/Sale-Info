@@ -1,0 +1,12 @@
+.my-map-container {
+	margin: 0 auto;
+    height: 40px;
+    text-align: center;
+    width: 500px;
+}
+
+.my-map-label {
+	margin: 0 auto;
+    text-align: center;
+    width: 500px;
+}

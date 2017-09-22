@@ -1,0 +1,44 @@
+{% extends "SaleInfo/base.html" %}
+
+{% block is_in %}
+<form class="navbar-form navbar-right my-sign-in-right-bar">
+  <div class="form-group">
+    <a href="{% url 'logout' %}" class='navbar-brand'>Sign Out</a>
+  </div>
+</form>
+{% endblock %}
+
+{% block find_block %}
+<form class="navbar-form navbar-right" method="POST" action="{% url 'brand_find' %}">
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="Search Brand" name="brand_name">
+  </div>
+  <button type="submit" class="btn btn-default">Find</button>
+  {% csrf_token %}
+</form>
+{% endblock %}
+
+{% block content %}
+<div id="brand-block" class="row brand-placeholders">
+  {% for brand in all_brands %}
+  <div class="col-xs-6 col-sm-3 brand-placeholder">
+    <img class="transparent" src="{% url 'brand_photo' brand.id %}" width="200" height="200" alt="Generic placeholder thumbnail">
+    <h4>
+      <a class="btn btn-success transparent" href="{{brand.url}}" target="_blank">{{brand.brand_name}}</a>
+      {% if brand in followed_brand %}
+      <button class="btn btn-danger" value="{{brand.id}}">Unfollow</button>
+      {% endif %}
+      {% if brand not in followed_brand %}
+      <button class="btn btn-primary" value="{{brand.id}}">Follow</button>
+      {% endif %}
+    </h4>
+  </div>
+  {% endfor %}
+</div>
+
+
+<!-- Brand JavaScript
+================================================== -->
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="/static/js/brand.js"></script>
+{% endblock %}

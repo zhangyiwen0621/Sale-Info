@@ -1,0 +1,41 @@
+{% extends "SaleInfo/base.html" %}
+
+{% block is_in %}
+<form class="navbar-form navbar-right my-sign-in-right-bar">
+  <div class="form-group">
+    <a href="{% url 'logout' %}" class='navbar-brand'>Sign Out</a>
+  </div>
+</form>{% endblock %}
+
+{% block find_block %}
+<form class="navbar-form navbar-right" method="POST" action="{% url 'favorite_find' %}">
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="Search Brand" name="brand_name">
+  </div>
+  <button type="submit" class="btn btn-default">Find</button>
+  {% csrf_token %}
+</form>
+{% endblock %}
+
+{% block content %}
+<div id="list">
+  {% for info in sale_infos %}
+  <div class='container'>
+    <div class='jumbotron my-sign-in-blog grad'>
+      <div class='col-xs-6 col-sm-3 brand-placeholder'>
+        <img src='/SaleInfo/brand_photo/{{info.brand.id}}'' width='150' height='150' alt='Generic placeholder thumbnail'>
+      </div>
+      <h2 class='saleinfo-title'>{{info.brand.brand_name}}</h2>
+      <p class='saleinfo-content'>{{info.content}}</p>
+      <p>
+      <a class='btn btn-lg btn-danger' href='/SaleInfo/store_map/{{info.brand.id}}/{{info.id}}' role='button'><span class='glyphicon glyphicon-map-marker' aria-hidden='true'></span>Find Stores</a>
+      <label>&nbsp;&nbsp;&nbsp;&nbsp;</label>
+      <a class='btn btn-lg btn-warning' href='{{info.brand.url}}' role='button' target="_blank"><span class='glyphicon glyphicon-home' aria-hidden='true'></span>Sale Home Page</a>
+      <label>&nbsp;&nbsp;&nbsp;&nbsp;</label>
+      <a class='btn btn-lg btn-primary' href='https://www.facebook.com/sharer/sharer.php?u=ec2-52-91-6-230.compute-1.amazonaws.com/SaleInfo/store_map/{{info.brand.id}}/{{info.id}}' target='_blank'><span class='glyphicon glyphicon-share' aria-hidden='true'></span> Share on Facebook</a>
+      </p>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

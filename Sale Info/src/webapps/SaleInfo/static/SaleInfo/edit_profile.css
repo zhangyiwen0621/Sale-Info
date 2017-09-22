@@ -1,0 +1,31 @@
+.my-edit-profile-container {
+	text-align: center;
+}
+
+.my-edit-profile-sub-container {
+	margin: 0 auto;
+	margin-top: 30px;
+	text-align: center;
+	width: 400px;
+}
+
+.my-edit-profile-sub-sub-container {
+	margin-left: 34px;
+	text-align: center;
+	width: 500px;
+}
+
+.my-edit-profile-input {
+	margin-bottom: 10px;
+}
+
+.my-edit-profile-button {
+	margin: 0 auto;
+	margin-top: 5px;
+	width: 150px;
+}
+
+.my-edit-profile-image {
+	margin: 0 auto;
+	border-radius: 50%;
+}

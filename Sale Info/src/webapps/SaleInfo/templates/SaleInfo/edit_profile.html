@@ -1,0 +1,62 @@
+{% extends "SaleInfo/base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="jumbotron transparent">
+      <div class="my-edit-profile-container">
+        <img src="{% url 'profile_photo' id %}" alt="" width="200px" height="200px" class="my-edit-profile-image">
+        
+        <form enctype="multipart/form-data" method="POST" action="{% url 'edit_profile' %}">
+          <div class="my-edit-profile-sub-container">
+            <div class="my-edit-profile-sub-sub-container">
+              <table>
+                <tr>
+                  <td>
+                    <p class="blog-post-meta">&nbsp;&nbsp;&nbsp;Picture:&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                  <td>
+                    <p class="blog-post-meta">{{form.picture}}</p>
+                  </td>
+                </tr>
+              </table>
+              <table>
+                <tr>
+                  <td>
+                    <p class="blog-post-meta">First Name:</p>
+                  </td>
+                  <td>
+                    <input type="text" name="first_name" class="form-control my-edit-profile-input" value="{{first_name}}">
+                  </td>
+                  <td>{{form1.first_name.errors}}</td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <p class="blog-post-meta">Last Name:</p>
+                  </td>
+                  <td>
+                    <input type="text" name="last_name" class="form-control my-edit-profile-input" value="{{last_name}}">
+                  </td>
+                  <td>{{form1.last_name.errors}}</td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <p class="blog-post-meta">Email:</p>
+                  </td>
+                  <td>
+                    <input type="text" name="email" class="form-control my-edit-profile-input" value="{{email}}">
+                  </td>
+                  <td>{{form1.email.errors}}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+          <button class="btn btn-success my-edit-profile-button" type="submit">Save</button>
+
+          {% csrf_token %}
+        </form>
+      </div>
+    </div>
+</div>
+{% endblock %}

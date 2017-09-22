@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<!-- Reference: Bootstrap Template -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- The above 2 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SaleInfo</title>
+
+    {% load static %}
+    <link href="{% static 'SaleInfo/base.css' %}" rel="stylesheet">
+    <link href="{% static 'SaleInfo/sign_in.css' %}" rel="stylesheet">
+    <link href="{% static 'SaleInfo/sign_up.css' %}" rel="stylesheet">
+    <link href="{% static 'SaleInfo/brand.css' %}" rel="stylesheet">
+    <link href="{% static 'SaleInfo/profile.css' %}" rel="stylesheet">
+    <link href="{% static 'SaleInfo/edit_profile.css' %}" rel="stylesheet">
+    <link href="{% static 'SaleInfo/coupon_exchange.css' %}" rel="stylesheet">
+    <link href="{% static 'SaleInfo/map.css' %}" rel="stylesheet">
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'SaleInfo/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="{% static 'SaleInfo/bootstrap/docs/assets/css/ie10-viewport-bug-workaround.css' %}" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lobster+Two" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=BenchNine" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Scope+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merienda" rel="stylesheet">
+    
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="{% static 'SaleInfo/bootstrap/docs/assets/js/ie-emulation-modes-warning.js' %}"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+       #map {
+        height: 400px;
+        width: 100%;
+       }
+    </style>
+
+  </head>
+
+  <body>
+    
+    <div id="navbar" class="navbar-collapse collapse">
+      <h2 class="navbar-form navbar-left base-left-bar">SaleInfo</h2>
+      {% block sign_in_block %}
+      {% endblock %}
+
+      {% block is_in %}
+      {% endblock %}
+    </div><!--/.navbar-collapse -->
+
+    <!-- Fixed navbar -->
+    <nav class="navbar transparent">
+      <div class="container">
+        <!-- Note that the .navbar-collapse and .collapse classes have been removed from the #navbar -->
+        <div id="navbar">
+          <ul class="nav navbar-nav">
+            <li><a href="{% url 'home' %}" class="my-menu-font" id="home">Home</a></li>
+            <li><a href="{% url 'favorite' %}" class="my-menu-font" id="favorite">Favorite</a></li>
+            <li><a href="{% url 'my_profile' %}" class="my-menu-font" id="profile">Profile</a></li>
+            <li><a href="{% url 'brand' %}" class="my-menu-font" id="brand">Brand</a></li>
+            <li><a href="{% url 'coupon_exchange' %}" class="my-menu-font" id="couponEX">CouponEX</a></li>
+          </ul>
+          {% block find_block %}
+          {% endblock %}
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/static/SaleInfo/bootstrap/docs/assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="/static/SaleInfo/bootstrap/docs/dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="/static/SaleInfo/bootstrap/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- Bootstrap Notify -->
+    <script type="text/javascript" src="{% static 'bootstrap-notify-master/bootstrap-notify.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'bootstrap-notify-master/animate.css' %}" />
+
+
+    <!-- DateTimePicker -->
+    <!-- <script type="text/javascript" src="{% static 'bower_components/jquery/jquery.min.js' %}"></script> -->
+    <script type="text/javascript" src="{% static 'bower_components/moment/min/moment.min.js' %}"></script>
+    <!-- <script type="text/javascript" src="{% static 'bower_components/bootstrap/dist/js/bootstrap.min.js' %}"></script> -->
+    <script type="text/javascript" src="{% static 'bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js' %}"></script>
+    <!-- <link rel="stylesheet" href="{% static 'bower_components/bootstrap/dist/css/bootstrap.min.css' %}" /> -->
+    <link rel="stylesheet" href="{% static 'bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css' %}" />
+
+    <!-- Bootstrap Rating -->
+    <script type="text/javascript" src="{% static 'bootstrap-rating-master/bootstrap-rating.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'bootstrap-rating-master/bootstrap-rating.min.css' %}" />
+
+  </body>
+</html>

@@ -1,0 +1,77 @@
+{% extends "SaleInfo/base.html" %}
+
+{% block is_in %}
+<form class="navbar-form navbar-right my-sign-in-right-bar">
+  <div class="form-group">
+    <a href="{% url 'logout' %}" class='navbar-brand'>Sign Out</a>
+  </div>
+</form>{% endblock %}
+
+{% block content %}
+<div class="row my-coupon-placeholders ">
+  <div class="col-xs-6 col-sm-6 my-coupon-placeholder transparent-red">
+  	<h2 class="my-coupon-title-font">Upload Coupon System</h2>
+    <div class="jumbotron my-coupon-add-container transparent">
+      <form enctype="multipart/form-data" action="{% url 'add_coupon'%}" method='post' id="add-coupon-form">
+        {% csrf_token %}
+        <table align='center' style='text-align:center; width:70%' class='table'>
+          {{coupon_form.as_table}}
+        </table>
+        <hr>
+        <button class="btn btn-primary" id="add-coupon-btn">Upload Coupon</button> 
+      </form>
+      
+    </div>
+  </div>
+  <div class="col-xs-6 col-sm-5 my-coupon-placeholder transparent-blue">
+    <h2 class="my-coupon-title-font">Coupon Exchange System</h2>
+    <div class="jumbotron my-coupon-add-container transparent">
+      <form method='post' id='coupon-exchange-list'>
+        {% csrf_token %}
+        <table align='center' style='text-align:center; width:70%' class='table'>
+          <!-- {{exchange_form.as_table}} -->
+          <tr>
+            <td>
+              <h5>Choose <span style="color:red">YOUR</span> coupon that you would like to exchange with others:</h5>
+              <select name='exchange-coupon-select' id='exchange-coupon-select' class="form-control" required>
+              </select>
+            </td>
+          </tr>
+          {% for field in exchange_form %}
+          <tr>
+            <td>
+              {% if field.name == 'request_coupon_brand' %}
+                <h5>Choose the brand of coupon you want:</h5>
+              {% else %}
+                <h5>Choose the category of coupon you want:</h5>
+              {% endif %}
+              {{field}}
+            </td>
+            <td>
+              {{field.error}}
+            </td>
+          {% endfor %}
+          </tr>
+        </table>
+        <hr>
+        <button class="btn btn-primary" id="add-exchange-btn">Exchange!</button>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="row my-coupon-placeholders">
+  <div class="col-xs-6 col-sm-6 my-coupon-placeholder transparent-red-reverse">
+    <h2 class="my-coupon-title-font">Owned Coupon</h2>
+    <ul style="list-style-type:none; padding:0" id="owned-coupon-list">
+    </ul>
+  </div>
+  <div class="col-xs-6 col-sm-5 my-coupon-placeholder transparent-blue-reverse">
+    <h2 class="my-coupon-title-font">List of Matches</h2>
+    <ul style="list-style-type:none; padding: 0px" id="match-coupon-list">
+    </ul>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="/static/js/coupon_exchange.js"></script>
+{% endblock %}

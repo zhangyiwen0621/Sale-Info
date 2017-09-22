@@ -1,0 +1,1 @@
+{"id":{{coupon.id}}, "valid":{{coupon.valid|lower}}, "in_exchange":{{coupon.in_exchange|lower}}, "match_html":"{{coupon.match_html|safe}}", "match_own_html":"{{coupon.match_own_html|safe}}"}

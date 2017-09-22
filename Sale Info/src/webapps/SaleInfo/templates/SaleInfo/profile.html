@@ -1,0 +1,59 @@
+{% extends "SaleInfo/base.html" %}
+
+{% block is_in %}
+<form class="navbar-form navbar-right my-sign-in-right-bar">
+  <div class="form-group">
+    <a href="{% url 'logout' %}" class='navbar-brand'>Sign Out</a>
+  </div>
+</form>{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="jumbotron my-profile-container grad">
+    <div class="col-xs-6 col-sm-8 my-profile-info-container">
+
+      <h1 class="blog-post-meta" style='display:inline-block'>{{currFirstname}} {{currLastname}}</h1>
+      &nbsp;&nbsp;&nbsp;
+      {% if isMyself %}
+        <a class="btn btn-success" href="{% url 'edit_profile' %}" style='display:inline-block'>Edit</a>
+      {% endif %}
+
+      <h3 class="blog-post-meta">User Name: {{currUsername}}</h3>
+
+      <h3 class="blog-post-meta">Reputation: <input type="hidden" class="rating" data-filled="glyphicon glyphicon-star" data-empty="glyphicon glyphicon-star-empty" value="{{currReputation}}" data-readonly/></h3>
+      
+      
+    </div>
+    <div class="col-xs-9 col-sm-4">
+      <img src="{% url 'profile_photo' id %}" width="200" height="200" class="my-profile-image" alt="Generic placeholder thumbnail">
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="col-sm-3 brand-placeholders">
+    {% for brand in brands %}
+    <div class="brand-placeholder">
+      <img class="transparent" src="{% url 'brand_photo' brand.id %}" width="150" height="150" alt="Generic placeholder thumbnail">
+      <h4>
+        <a class="btn btn-success transparent" href="{{brand.url}}" target="_blank">{{brand.brand_name}}</a>
+      </h4>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="col-sm-9 my-coupon-placeholders">
+    {% for coupon in own_coupons %}
+    <div class='jumbotron my-coupon-blog transparent-white'>
+      <h2 class='saleinfo-title'>{{coupon.brand}}</h2>
+      <h3 class='saleinfo-content'>Category: {{coupon.category}}<br>{{coupon.content}}</h3>
+      <h4 class='saleinfo-content'>Exchange Status: {{coupon.in_exchange}}</h4>
+      <h5 class='saleinfo-content'>Expiration Date: {{coupon.expiration_date}}</h5>
+      <img src='/SaleInfo/coupon_exchange/coupon_photo/{{coupon.id}}' width='300'></div>  
+    {% endfor %}
+  </div>
+</div>
+
+<!-- Sale Information Update JavaScript
+================================================== -->
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="/static/js/profile.js"></script>
+{% endblock %}

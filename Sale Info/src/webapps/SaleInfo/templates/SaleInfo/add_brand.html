@@ -1,0 +1,45 @@
+{% extends "SaleInfo/base.html" %}
+
+{% block content %}
+<div class="my-sign-up-container">
+
+  <form enctype="multipart/form-data" method="POST" action="">
+    <div class="my-sign-up-sub-container">
+      <div class="my-sign-up-sub-sub-container">
+        <table>
+        <!-- {{form.as_table}} -->
+          <tr>
+            <td>
+              <input type="url" name="url" class="form-control my-sign-up-input" placeholder="{{form.url.label}}" required>
+            </td>
+            <td>{{form.url.errors}}</td>
+          </tr>
+
+          <tr>
+            <td>
+              <input type="text" name="brand_name" class="form-control my-sign-up-input" placeholder="{{form.brand_name.label}}" required>
+            </td>
+            <td>{{form.brand_name.errors}}</td>
+          </tr>
+
+          <tr>
+            <td>
+              <input style="background-color:transparent; border:0px; outline:none" type="file" name="brand_image" class="form-control my-sign-up-input" placeholder="{{form.brand_image.label}}" required>
+            </td>
+            <td>{{form.brand_image.errors}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <button class="btn btn-success my-sign-up-button" type="submit">Add Brand</button>
+    {% csrf_token %}
+  </form>
+
+  {% for error in form.non_field_errors %}
+    <p class="my-sign-up-error">
+      {{error}}
+    </p>
+  {% endfor %}
+</div>
+{% endblock %}

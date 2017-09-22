@@ -1,0 +1,17 @@
+.brand-placeholders {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.brand-placeholders h4 {
+  margin-bottom: 0;
+}
+
+.brand-placeholder {
+  margin-bottom: 20px;
+}
+
+.brand-placeholder img {
+  display: inline-block;
+  border-radius: 50%;
+}

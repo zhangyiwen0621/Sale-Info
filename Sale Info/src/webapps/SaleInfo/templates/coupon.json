@@ -1,0 +1,1 @@
+{"id":{{coupon.id}}, "valid":{{coupon.valid|lower}}, "in_exchange":{{coupon.in_exchange|lower}}, "rated":{{coupon.rated|lower}}, "profile_id":{{coupon.profile.id}}, "owned_html":"{{coupon.owned_html|safe}}", "exchange_html":"{{coupon.exchange_html|safe}}"}

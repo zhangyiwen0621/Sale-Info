@@ -1,0 +1,1 @@
+{"id":{{sale_info.id}}, "html":"{{sale_info.html|safe}}"}

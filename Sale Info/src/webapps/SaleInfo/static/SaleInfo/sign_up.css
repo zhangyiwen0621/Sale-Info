@@ -1,0 +1,31 @@
+.my-sign-up-container {
+	text-align: center;
+}
+
+.my-sign-up-input {
+	margin-bottom: 10px;
+}
+
+.btn-primary.my-sign-up-button {
+	width: 150px;
+	margin-bottom: 10px;
+}
+
+.my-sign-up-sub-container {
+	margin: 0 auto;
+	margin-top: 30px;
+	text-align: center;
+	width: 200px;
+}
+
+.my-sign-up-sub-sub-container {
+	margin-left: 10px;
+	text-align: center;
+	width: 375px;
+}
+
+.my-sign-up-error {
+	width: 170px;
+	margin-top: 30px;
+	margin-bottom: : 30px;
+}

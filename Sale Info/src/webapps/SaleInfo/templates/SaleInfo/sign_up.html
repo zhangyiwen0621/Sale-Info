@@ -1,0 +1,81 @@
+{% extends "SaleInfo/base.html" %}
+
+{% block content %}
+<div class="my-sign-up-container">
+  <div class="my-sign-up-sub-container">
+    <div class="my-sign-up-sub-sub-container">
+      <form method="POST" action="{% url 'sign_up' %}">
+        <table>
+          <tr>
+            <td>
+              <input type="text" name="username" class="form-control my-sign-up-input" placeholder="{{form.username.label}}" required autofocus>
+            </td>
+            <td>{{form.username.errors}}</td>
+          </tr>
+
+          <tr>
+            <td>
+              <input type="text" name="first_name" class="form-control my-sign-up-input" placeholder="{{form.first_name.label}}">
+            </td>
+            <td>{{form.first_name.errors}}</td>
+          </tr>
+
+          <tr>
+            <td>
+              <input type="text" name="last_name" class="form-control my-sign-up-input" placeholder="{{form.last_name.label}}">
+            </td>
+            <td>{{form.last_name.errors}}</td>
+          </tr>
+
+          <tr>
+            <td>
+              <input type="password" name="password1" class="form-control my-sign-up-input" placeholder="{{form.password1.label}}">
+            </td>
+            <td>{{form.password1.errors}}</td>
+          </tr>
+
+          <tr>
+            <td>
+              <input type="password" name="password2" class="form-control my-sign-up-input" placeholder="{{form.password2.label}}">
+            </td>
+            <td>{{form.password2.errors}}</td>
+          </tr>
+
+          <tr>
+            <td>
+              <input type="text" name="email" class="form-control my-sign-up-input" placeholder="{{form.email.label}}">
+            </td>
+            <td>{{form.email.errors}}</td>
+          </tr>
+
+          <tr>
+            <td>
+              <button class="btn btn-primary my-sign-up-button" type="submit">Sign Up</button>
+            </td>
+            <td></td>
+          </tr>
+
+          <tr>
+            <td>
+              <a href="{% url 'sign_in' %}">Go Back to Sign In</a>
+            </td>
+            <td></td>
+          </tr>
+
+          <tr>
+            <td>
+              {% for error in form.non_field_errors %}
+              <p class="my-sign-up-error">
+                {{error}}
+              </p>
+              {% endfor %}
+            </td>
+            <td></td>
+          </tr>
+        </table>
+      {% csrf_token %}
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

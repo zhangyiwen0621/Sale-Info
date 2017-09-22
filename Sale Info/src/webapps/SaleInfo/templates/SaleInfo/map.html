@@ -1,0 +1,50 @@
+{% extends "SaleInfo/base.html" %}
+
+{% block is_in %}
+<form class="navbar-form navbar-right my-sign-in-right-bar">
+  <div class="form-group">
+    <a href="{% url 'logout' %}" class='navbar-brand'>Sign Out</a>
+  </div>
+</form>{% endblock %}
+
+{% block content %}
+<div class='container'>
+  <div class='jumbotron'>
+
+    <div class='col-xs-6 col-sm-4 brand-placeholder'>
+      <img src='/SaleInfo/brand_photo/{{brand_id}}' width='150' height='150' alt='Generic placeholder thumbnail'>
+    </div>
+
+    <form method="POST" action="{% url 'find_stores' %}">
+      <table>
+        <input type="hidden" name="brand_id" value="{{brand_id}}">
+		<input type="hidden" name="brand_name" value="{{brand_name}}">
+		<input type="hidden" name="sale_info_id" value="{{sale_info_id}}">
+		<tr>
+		  <td>Current Location Zip Code: </td>
+		  <td>
+			<input id="zipcode" type="text" placeholder="Zip Code" class="form-control" name="zip_code" value="{{zip_code}}" required autofocus>
+		  </td>
+		  <td><button class="btn btn-success" type="submit">Find</button></td>
+	    </tr>
+	  </table>
+	  {% csrf_token %}
+	</form>
+
+    <h3><label id="location" type="text">{{brand_name}}</label></h3>
+    <label>Stores (Within 50 Miles)</label>
+    <p>{{sale_info_content}}</p>
+  </div>
+</div>
+
+<div class='container'>
+  <div class='jumbotron'>
+    <div id="map"></div>
+  </div>
+</div>
+
+<script src="/static/js/map.js"></script>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4_Xusm_qCONOQaTkUCKVqYK7Vsog9rnE&libraries=places&callback=initMap">
+</script>
+{% endblock %}
